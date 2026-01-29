@@ -23,3 +23,20 @@ kubectl create -f hello_world.yaml
 
 ## Detailed pod
 kubectl get pod whalesay -o json
+
+
+# Kubeflow
+
+## Namespace
+kubectl create ns kubeflow
+kubectl config set-context --current --namespace=kubeflow
+
+## apply manifests and installation
+kubectl kustomize manifests | kubectl apply -f -
+
+## Submit distributed tf training - 2 replicas
+kubectl create -f tfjob.yaml
+kubectl get tfjob
+kubectl get pods
+
+# Argo workflows
